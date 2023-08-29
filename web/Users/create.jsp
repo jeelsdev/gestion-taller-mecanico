@@ -56,7 +56,10 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">Tipo de documento</label>
-                <input type="text" id="form6Example2" class="form-control" name="documentType" value=""/>
+                 <select class="form-select" name="documentType" id="form6Example2" aria-label="Default select example">
+                    <option value="DNI">DNI</option>
+                    <option value="Carnet">Carnet</option>
+                  </select>
               </div>
             </div>
             <div class="col">

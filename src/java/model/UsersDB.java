@@ -146,7 +146,7 @@ public class UsersDB {
         PreparedStatement ps;
         
         try{
-            ps = con.prepareStatement("DELETE FROM users WHERE id=?");
+            ps = con.prepareStatement("DELETE FROM users WHERE id_user=?");
             ps.setInt(1, _id);
             ps.execute();
             

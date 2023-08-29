@@ -38,7 +38,7 @@
 
     <div class="container">
         <h2 class="pt-2">Editar datos</h2>
-        <form action="Users?action=update" method="POST" autocomplete="off">
+        <form action="Users?action=update" method="POST" autocomplete="off" onsubmit="return confirm('Estas serguro de guardar el registro??')">
             <div>
                 <input type="hidden" value="${user.idUser}" name="id" id="id">
             </div>
@@ -54,8 +54,11 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">Tipo de documento</label>
-                <input type="text" id="form6Example2" class="form-control" name="documentType" value="${user.documentType}"/>
-              </div>
+                <select class="form-select" name="documentType" id="form6Example2" aria-label="Default select example">
+                    <option value="DNI" ${(user.documentType == "DNI")? "selected": ""} >DNI</option>
+                    <option value="Carnet" ${(user.documentType == "Carnet")? "selected": ""} >Carnet</option>
+                  </select>
+                </div>
             </div>
             <div class="col">
               <div class="form-outline">
