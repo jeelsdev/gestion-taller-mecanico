@@ -74,7 +74,13 @@
               <td><c:out value="${product.phono}" /></td>
               <td><c:out value="${product.email}" /></td>
               <td><a href="Users?action=edit&id=<c:out value="${product.idUser}" />">Editar</a></td>
-              <td><a href="Users?action=edit&id=<c:out value="${product.idUser}" />">Eliminar</a></td>
+              <td>
+                  <form action="Users?action=delete" method="POST">
+                      <input type="hidden" name="id" id="id" value="<c:out value="${product.idUser}" />">
+                      <input type="submit" name="submit" id="submit" value="<c:out value="Eliminar" />" class="link-offset-1">
+                      
+                  </form>
+              </td>
             </tr>
         </c:forEach>
         
