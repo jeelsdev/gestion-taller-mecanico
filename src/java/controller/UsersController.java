@@ -73,7 +73,15 @@ public class UsersController extends HttpServlet {
             dispatcher = request.getRequestDispatcher("Users/index.jsp");
             List<Users> listUsers = usersDB.listUsers();
             request.setAttribute("listUsers", listUsers);
+        }else if("delete".equals(action)){
+            int id = Integer.parseInt(request.getParameter("id"));
+            boolean userss= usersDB.deleteUser(id);
+            System.out.println(userss);
+            dispatcher = request.getRequestDispatcher("Users/index.jsp");
+            List<Users> listUsers = usersDB.listUsers();
+            request.setAttribute("listUsers", listUsers);
         }
+        
         dispatcher.forward(request, response);
     }
 
