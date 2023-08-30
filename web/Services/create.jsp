@@ -1,3 +1,10 @@
+<%-- 
+    Document   : create
+    Created on : 29 ago. 2023, 17:48:35
+    Author     : User
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -34,7 +41,22 @@
         </div>
     </nav>
 
-
+    <div class="container">
+        <h2 class="pt-2">Crear servicio</h2>
+        <form action="services?action=insert" method="POST" autocomplete="off">
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example1">Nombre del servicio</label>
+                <input type="text" value="" name="nameService" id="form6Example1" class="form-control"  />
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block mb-4">Guardar</button>
+          <a href="services" class="btn btn-secondary btn-block mb-4">Cancelar</a>
+        </form>
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>

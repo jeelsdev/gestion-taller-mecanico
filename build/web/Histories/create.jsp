@@ -1,9 +1,9 @@
 <%-- 
     Document   : create
-    Created on : 27 ago. 2023, 19:38:55
+    Created on : 30 ago. 2023, 00:56:19
     Author     : User
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,20 +21,25 @@
     <jsp:include page="../layaout/navigation.html"/>
 
     <div class="container">
-        <h2 class="pt-2">Crear usuario</h2>
-        <form action="users?action=insert" method="POST" autocomplete="off">
+        <h2 class="pt-2">Crear Historial</h2>
+        <form action="histories?action=insert" method="POST" autocomplete="off">
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="form6Example1">Nombre / Razon social</label>
-                <input type="text" value="" name="nameBusiness" id="form6Example1" class="form-control"  />
+                <label class="form-label" for="form6Example1">Nombre del cliente</label>
+                <select class="form-select" name="documentType" id="form6Example2" aria-label="Default select example">
+                        <option value="">--Seleccionar--</option>
+                        <c:forEach var="user" items="${listUsers}">
+                            <option value="${user.idUser}">${user.nameBusiness}</option>
+                        </c:forEach>
+                  </select>
               </div>
             </div>
           </div>
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="form6Example2">Tipo de documento</label>
+                <label class="form-label" for="form6Example2">Vehiculo</label>
                  <select class="form-select" name="documentType" id="form6Example2" aria-label="Default select example">
                     <option value="DNI">DNI</option>
                     <option value="Carnet">Carnet</option>
@@ -43,33 +48,17 @@
             </div>
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="form6Example2">Número de documento</label>
-                <input type="number" id="form6Example2" class="form-control" name="documentNumber" value=""/>
+                <label class="form-label" for="form6Example2">Servicio</label>
+                <select class="form-select" name="documentType" id="form6Example2" aria-label="Default select example">
+                    <option value="DNI">DNI</option>
+                    <option value="Carnet">Carnet</option>
+                  </select>
               </div>
             </div>
           </div>
-          <div class="row mb-4">
-            <div class="col">
-              <div class="form-outline">
-                <label class="form-label" for="form6Example2">Dirección</label>
-                <input type="text" id="form6Example2" class="form-control" name="direction" value=""/>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-outline">
-                <label class="form-label" for="form6Example2">Télefono</label>
-                <input type="number" id="form6Example2" class="form-control" name="phono" value=""/>
-              </div>
-            </div>
-          </div>
-            
-          <div class="form-outline mb-4">
-            <label class="form-label" for="form6Example3">Email</label>
-            <input type="email" name="email" value="" id="form6Example3" class="form-control" />
-          </div>
-
+          
           <button type="submit" class="btn btn-primary btn-block mb-4">Guardar</button>
-          <a href="users" class="btn btn-secondary btn-block mb-4">Cancelar</a>
+          <a href="histories" class="btn btn-secondary btn-block mb-4">Cancelar</a>
         </form>
     </div>
     
@@ -79,4 +68,5 @@
 </body>
 
 </html>
+
 
