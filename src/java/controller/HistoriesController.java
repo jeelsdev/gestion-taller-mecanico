@@ -15,8 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Histories;
 import model.HistoriesDB;
+import model.Services;
+import model.ServicesDB;
 import model.Users;
 import model.UsersDB;
+import model.Vehicles;
+import model.VehiclesDB;
 
 /**
  *
@@ -49,6 +53,8 @@ public class HistoriesController extends HttpServlet {
             throws ServletException, IOException {
         HistoriesDB historiesDB = new HistoriesDB();
         UsersDB usersDB = new UsersDB();
+        ServicesDB servicesDB = new ServicesDB();
+        VehiclesDB vehiclesDB = new VehiclesDB();
         String action;
         RequestDispatcher dispatcher = null;
         
@@ -83,8 +89,9 @@ public class HistoriesController extends HttpServlet {
         }else if("create".equals(action)){
             dispatcher = request.getRequestDispatcher("Histories/create.jsp");
             List<Users> listUsers = usersDB.listUsers();
+            List<Services> listServices = servicesDB.listServices();
             request.setAttribute("listUsers", listUsers);
-            System.out.println(listUsers+"EStoy en el craeteeee!!!!!!!");
+            request.setAttribute("listServices", listServices);
             
         }else if("insert".equals(action)){
             String nameBusiness = request.getParameter("nameBusiness");
@@ -106,6 +113,11 @@ public class HistoriesController extends HttpServlet {
             dispatcher = request.getRequestDispatcher("Users/index.jsp");
             List<Histories> listUsers = historiesDB.listHistories();
             request.setAttribute("listUsers", listUsers);
+        }else if("profile".equals(action)){
+            dispatcher = request.getRequestDispatcher("Histories/historiesVehicle.jsp");
+            int id = Integer.parseInt(request.getParameter("id"));
+            Histories vehicleHistory = vehiclesDB.showVehicle(id);
+            request.setAttribute("user", vehicleHistory);
         }
         
         dispatcher.forward(request, response);

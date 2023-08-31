@@ -39,7 +39,6 @@ public class ServicesDB {
             while(rs.next()){
                 int idService = rs.getInt("id_service");
                 String name = rs.getString("name");
-                System.out.println(name + "esteoesfdsafsf!!!!!!!!!!!!!!");
                 
                 Services services = new Services(idService, name);
                 

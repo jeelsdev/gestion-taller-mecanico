@@ -40,25 +40,29 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">Vehiculo</label>
-                 <select class="form-select" name="documentType" id="form6Example2" aria-label="Default select example">
-                    <option value="DNI">DNI</option>
-                    <option value="Carnet">Carnet</option>
+                <select class="form-select" name="documentType" id="form6Example2" aria-label="Default select example">
+                        <option value="">--Seleccionar--</option>
+                        <c:forEach var="user" items="${listUsers}">
+                            <option value="${user.idUser}">${user.nameBusiness}</option>
+                        </c:forEach>
                   </select>
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="form6Example2">Servicio</label>
-                <select class="form-select" name="documentType" id="form6Example2" aria-label="Default select example">
-                    <option value="DNI">DNI</option>
-                    <option value="Carnet">Carnet</option>
+                <label class="form-label" for="services">Servicio</label>
+                <select class="form-select" name="documentType" id="services" aria-label="Default select example">
+                        <option value="">--Seleccionar--</option>
+                        <c:forEach var="service" items="${listServices}">
+                            <option value="${service.idService}">${service.name}</option>
+                        </c:forEach>
                   </select>
               </div>
             </div>
           </div>
           
           <button type="submit" class="btn btn-primary btn-block mb-4">Guardar</button>
-          <a href="histories" class="btn btn-secondary btn-block mb-4">Cancelar</a>
+          <a href="histories" class="btn btn-sm btn-outline-secondary mb-4">Cancelar</a>
         </form>
     </div>
     

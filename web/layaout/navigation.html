@@ -1,5 +1,156 @@
 
     
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Taller mecanico</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/machanicalicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Aug 30 2023 with Bootstrap v5.3.1
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/" class="logo d-flex align-items-center">
+        <img src="assets/img/caricon.png" alt="">
+        <span class="d-none d-lg-block">Taller mecanico</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="/">
+          <i class="bi bi-grid"></i>
+          <span>inicio</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-people"></i><span>Usuarios</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="users">
+              <i class="bi bi-circle"></i><span>Listar usuarios</span>
+            </a>
+          </li>
+          <li>
+            <a href="users?action=create">
+              <i class="bi bi-circle"></i><span>Crear usuario</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Components Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-truck-front"></i><span>Vehiculos</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="vehicles">
+              <i class="bi bi-circle"></i><span>Listar vehiculos</span>
+            </a>
+          </li>
+          <li>
+            <a href="vehicles?action=create">
+              <i class="bi bi-circle"></i><span>Registrar vehiculo</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Forms Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Servicios</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="services">
+              <i class="bi bi-circle"></i><span>Listar servicios</span>
+            </a>
+          </li>
+          <li>
+            <a href="services?action=create">
+              <i class="bi bi-circle"></i><span>Crear servicio</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
+
+      
+
+      <li class="nav-heading">Pages</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="histories">
+          <i class="bi bi-clock-history"></i>
+          <span>Historiales</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-register.html">
+          <i class="bi bi-card-list"></i>
+          <span>Register</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+
+
+
+
+
+
+
+<!<!-- 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -32,7 +183,15 @@
                               </svg>
                             Historiales</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center gx-3" href="vehicles">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                              </svg>
+                            Vehiculos</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+ -->

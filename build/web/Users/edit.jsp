@@ -1,23 +1,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
 
-<head>
-    <title>Taller mecanico</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-</head>
 
-<body>
+<jsp:include page="../layaout/navigation.html"/>
 
-    <jsp:include page="../layaout/navigation.html"/>
+    
 
-    <div class="container">
-        <h2 class="pt-2">Editar datos</h2>
-        <form action="users?action=update" method="POST" autocomplete="off" onsubmit="return confirm('Estas serguro de guardar el registro??')">
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Editar datos del usuario</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Editar</h5>
+              <form action="users?action=update" method="POST" autocomplete="off" onsubmit="return confirm('Estas serguro de guardar el registro??')">
             <div>
                 <input type="hidden" value="${user.idUser}" name="id" id="id">
             </div>
@@ -64,11 +66,15 @@
           <button type="submit" class="btn btn-primary btn-block mb-4">Guardar</button>
           <a href="users" class="btn btn-secondary btn-block mb-4">Cancelar</a>
         </form>
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
-</body>
+              
+            </div>
+          </div>
 
-</html>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+    
+   <jsp:include page="../layaout/footer.jsp"/>

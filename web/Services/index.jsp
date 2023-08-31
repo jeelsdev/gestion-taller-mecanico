@@ -1,44 +1,33 @@
-<%-- 
-    Document   : index
-    Created on : 29 ago. 2023, 17:30:27
-    Author     : User
---%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<head>
-    <title>Taller mecanico</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-</head>
 
-<body>
-
-    <jsp:include page="../layaout/navigation.html"/>
+<jsp:include page="../layaout/navigation.html"/>
 
     
-    
-    <div class="container mt-5 text-end">
-        <a href="services?action=create" class="btn btn-success">Crear servicio</a>
-    </div>
 
-    <div class="container px-2">
-    
-        <div class="table-responsive">
-        <table class="table table-responsive table-borderless">
-            
-          <thead>
-            <tr class="bg-light">
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Lista de servicios</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Servicios</h5>
+              <table class="table">
+                <thead>
+                  <tr class="bg-light">
               <th scope="col" width="40%">#</th>
               <th scope="col" width="60%">Nombre</th>
             </tr>
-          </thead>
-      <tbody>
+                </thead>
+                <tbody>
          <c:forEach var="service" items="${listServices}">
              <tr>
                 <td><c:out value="${service.idService}" /></td>
@@ -62,16 +51,18 @@
         </c:forEach>
         
       </tbody>
-    </table>
-      
+              </table>
+
+            </div>
+          </div>
+
+        </div>
       </div>
-        
-    </div>
+    </section>
+
+  </main>
+       
     
+   <jsp:include page="../layaout/footer.jsp"/>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+   

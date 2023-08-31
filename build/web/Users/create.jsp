@@ -1,28 +1,25 @@
-<%-- 
-    Document   : create
-    Created on : 27 ago. 2023, 19:38:55
-    Author     : User
---%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
 
-<head>
-    <title>Taller mecanico</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-</head>
 
-<body>
+<jsp:include page="../layaout/navigation.html"/>
 
-    <jsp:include page="../layaout/navigation.html"/>
+    
 
-    <div class="container">
-        <h2 class="pt-2">Crear usuario</h2>
-        <form action="users?action=insert" method="POST" autocomplete="off">
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Craer usuario</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Crear</h5>              
+              <form action="users?action=insert" method="POST" autocomplete="off">
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
@@ -68,15 +65,17 @@
             <input type="email" name="email" value="" id="form6Example3" class="form-control" />
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block mb-4">Guardar</button>
-          <a href="users" class="btn btn-secondary btn-block mb-4">Cancelar</a>
+          <button type="submit" class="btn btn-primary btn-block">Guardar</button>
         </form>
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
-</body>
+            </div>
+          </div>
 
-</html>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+    
+   <jsp:include page="../layaout/footer.jsp"/>
 
