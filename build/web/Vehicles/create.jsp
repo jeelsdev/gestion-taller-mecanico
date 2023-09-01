@@ -77,6 +77,14 @@
               </div>
             </div>
           </div>            
+            <div class="row mb-4">
+            <div class="col">
+              <div class="form-floating">
+                  <textarea class="form-control" name="history" placeholder="Leave a comment here" id="floatingTextarea" style="height: 10rem"></textarea>
+                <label for="floatingTextarea">Historial</label>
+              </div>
+            </div>            
+          </div>            
 
           <button type="submit" class="btn btn-primary btn-block">Guardar</button>
           <a href="vehicles" class="btn btn-sm btn-outline-secondary">Cancelar</a>

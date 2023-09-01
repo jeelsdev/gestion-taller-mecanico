@@ -117,7 +117,7 @@ public class HistoriesController extends HttpServlet {
             dispatcher = request.getRequestDispatcher("Histories/historiesVehicle.jsp");
             int id = Integer.parseInt(request.getParameter("id"));
             Histories vehicleHistory = vehiclesDB.showVehicle(id);
-            request.setAttribute("user", vehicleHistory);
+            request.setAttribute("vehicleHistory", vehicleHistory);
         }
         
         dispatcher.forward(request, response);

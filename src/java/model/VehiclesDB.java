@@ -32,7 +32,7 @@ public class VehiclesDB {
         List<Vehicles> list = new ArrayList<>();
         
         try {
-            ps = con.prepareStatement("SELECT id_vehicle, name_business, type_vehicle, brand, model, plate, km, history, serial_number FROM vehicles INNER JOIN users ON vehicles.id_user = users.id_user");
+            ps = con.prepareStatement("SELECT id_vehicle, name_business, type_vehicle, brand, model, plate, km, history FROM vehicles INNER JOIN users ON vehicles.id_user = users.id_user");
             rs = ps.executeQuery();
             
             while(rs.next()){
@@ -44,9 +44,8 @@ public class VehiclesDB {
                 String plate = rs.getString("plate");
                 double km = rs.getDouble("km");
                 String history = rs.getString("history");
-                String serialNumber = rs.getString("serial_number");
                 
-                Vehicles vehicles = new Vehicles(idVehicle, nameBusiness, typeVehicle, brand, model, plate, km, history, serialNumber);
+                Vehicles vehicles = new Vehicles(idVehicle, nameBusiness, typeVehicle, brand, model, plate, km, history);
                 
                 list.add(vehicles);
             }
@@ -58,6 +57,39 @@ public class VehiclesDB {
             System.out.println(e.toString());
             return null;
             
+        }
+        
+    }
+    
+    public Vehicles showVehicleEdit(int _id){
+        
+        PreparedStatement ps; 
+        ResultSet rs;
+        Vehicles vehicle = null;
+        
+        try{
+            
+            ps = con.prepareStatement("SELECT id_vehicle,type_vehicle, brand, model, km, history FROM vehicles WHERE id_vehicle=?");
+            ps.setInt(1, _id);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int idVehicle = rs.getInt("id_vehicle");
+                String typeVehicle = rs.getString("type_vehicle");
+                String brand = rs.getString("brand");
+                String model = rs.getString("model");
+                double km = rs.getDouble("km");
+                String history = rs.getString("history");
+                
+                vehicle = new Vehicles(idVehicle, typeVehicle, brand, model, km, history);
+                
+                                              
+            }
+            return vehicle;
+            
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
         }
         
     }
@@ -97,19 +129,20 @@ public class VehiclesDB {
         
     }
     
-    public boolean insertUser(Users user){
+    public boolean insertVehicle(Vehicles vehicle){
         PreparedStatement ps;
         
         try{
             
-            ps = con.prepareStatement("INSERT INTO vehicles (id_vehicle, id_user, type_vehicle, brand, model, plate, km, history, serial_number) VALUES (?,?,?,?,?,?,?,?,?)");
+            ps = con.prepareStatement("INSERT INTO vehicles (id_user, type_vehicle, brand, model, plate, km, history) VALUES (?,?,?,?,?,?,?)");
             
-            ps.setString(1, user.getNameBusiness());
-            ps.setString(2, user.getDocumentType());
-            ps.setInt(3, user.getDocumentNumber());
-            ps.setString(4, user.getDirection());
-            ps.setString(5, user.getPhono());
-            ps.setString(6, user.getEmail());
+            ps.setInt(1, vehicle.getIdUsuario());
+            ps.setString(2, vehicle.getTypeVehicle());
+            ps.setString(3, vehicle.getBrand());
+            ps.setString(4, vehicle.getModel());
+            ps.setString(5, vehicle.getPlate());
+            ps.setDouble(6, vehicle.getKm());
+            ps.setString(7, vehicle.getHistory());
             
             ps.execute();
             
@@ -121,19 +154,22 @@ public class VehiclesDB {
         }
     }
     
-    public boolean updateUser(Users user){
+    public boolean updateVehicle(Vehicles vehicle){
         PreparedStatement ps;
         
         try{
             
-            ps = con.prepareStatement("UPDATE users SET name_business=?, document_type=?, document_number=?, direction=?, phono=? WHERE id_user=?");
+            ps = con.prepareStatement("UPDATE vehicles SET type_vehicle=?, brand=?, model=?, plate=?, km=?, history=? WHERE id_vehicle=?");
          
-            ps.setString(1, user.getNameBusiness());
-            ps.setString(2, user.getDocumentType());
-            ps.setInt(3, user.getDocumentNumber());
-            ps.setString(4, user.getDirection());
-            ps.setString(5, user.getPhono());
-            ps.setInt(6, user.getIdUser());
+            ps.setString(1, vehicle.getTypeVehicle());
+            ps.setString(2, vehicle.getBrand());
+            ps.setString(3, vehicle.getModel());
+            ps.setString(4, vehicle.getPlate());
+            ps.setDouble(5, vehicle.getKm());
+            ps.setString(6, vehicle.getHistory());
+            ps.setInt(7, vehicle.getIdVehicle());
+            
+            System.out.println(vehicle.getBrand()+ " nose");
             
             ps.execute();
             

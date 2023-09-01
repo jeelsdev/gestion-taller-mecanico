@@ -60,44 +60,45 @@ public class VehiclesController extends HttpServlet {
             request.setAttribute("listVehicles", listVehicles);
             
         }else if("edit".equals(action)){
-            dispatcher = request.getRequestDispatcher("Users/edit.jsp");
+            dispatcher = request.getRequestDispatcher("Vehicles/edit.jsp");
             int id = Integer.parseInt(request.getParameter("id"));
-            Users user = usersDB.showUser(id);
-            System.out.println(user);
-            request.setAttribute("user", user);
+            Vehicles vehicle = vehiclesDB.showVehicleEdit(id);
+            request.setAttribute("vehicle", vehicle);
         }else if("update".equals(action)){
             
-            int idUser = Integer.parseInt(request.getParameter("id"));
-            String nameBusiness = request.getParameter("nameBusiness");
-            String documentType = request.getParameter("documentType");
-            int documentNumber = Integer.parseInt(request.getParameter("documentNumber"));
-            String direction = request.getParameter("direction");
-            String phono = request.getParameter("phono");
+            int idVehicle = Integer.parseInt(request.getParameter("id"));
+            String typeVehicle = request.getParameter("typeVehicle");
+            String brand = request.getParameter("brand");
+            String model = request.getParameter("model");
+            String plate = request.getParameter("plate");
+            double km = Double.parseDouble(request.getParameter("km"));
+            String history = request.getParameter("history");
+            Vehicles updateVehicle = new Vehicles(idVehicle, typeVehicle, brand, model, plate, km, history);
+            boolean ser = vehiclesDB.updateVehicle(updateVehicle);
+            System.out.println(ser + "serrrrrr!!!!!!!!!");
             
-            Users updateUser = new Users(idUser, nameBusiness, documentType, documentNumber, direction, phono);
-            usersDB.updateUser(updateUser);
-            
-            dispatcher = request.getRequestDispatcher("Users/index.jsp");
-            List<Users> listUsers = usersDB.listUsers();
-            request.setAttribute("listUsers", listUsers);
+            dispatcher = request.getRequestDispatcher("Vehicles/index.jsp");
+            List<Vehicles> listVehicles = vehiclesDB.listVehicles();
+            request.setAttribute("listVehicles", listVehicles);
         }else if("create".equals(action)){
             dispatcher = request.getRequestDispatcher("Vehicles/create.jsp");
             List<Users> listUsers = usersDB.listUsers();
             request.setAttribute("listUsers", listUsers);
         }else if("insert".equals(action)){
-            String nameBusiness = request.getParameter("nameBusiness");
-            String documentType = request.getParameter("documentType");
-            int documentNumber = Integer.parseInt(request.getParameter("documentNumber"));
-            String direction = request.getParameter("direction");
-            String phono = request.getParameter("phono");
-            String email = request.getParameter("email");
+            int idUser = Integer.parseInt(request.getParameter("idUser"));
+            String typeVehicle = request.getParameter("typeVehicle");
+            String brand = request.getParameter("brand");
+            String model = request.getParameter("model");
+            String plate = request.getParameter("plate");
+            double km = Double.parseDouble(request.getParameter("km"));
+            String history = request.getParameter("history");
             
-            Users insertUser = new Users(nameBusiness, documentType, documentNumber, direction, phono, email);
-            usersDB.insertUser(insertUser);
+            Vehicles insertVehicle = new Vehicles(idUser, typeVehicle, brand, model, plate, km, history);
+            vehiclesDB.insertVehicle(insertVehicle);
             
-            dispatcher = request.getRequestDispatcher("Users/index.jsp");
-            List<Users> listUsers = usersDB.listUsers();
-            request.setAttribute("listUsers", listUsers);
+            dispatcher = request.getRequestDispatcher("Vehicles/index.jsp");
+            List<Vehicles> listVehicles = vehiclesDB.listVehicles();
+            request.setAttribute("listVehicles", listVehicles);
         }else if("delete".equals(action)){
             int id = Integer.parseInt(request.getParameter("idUser"));
             usersDB.deleteUser(id);

@@ -9,7 +9,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Editar datos del usuario</h1>
+      <h1>Editar datos del vehiculo</h1>
     </div><!-- End Page Title -->
 
     <section class="section">
@@ -19,52 +19,60 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Editar</h5>
-              <form action="users?action=update" method="POST" autocomplete="off" onsubmit="return confirm('Estas serguro de guardar el registro??')">
-            <div>
-                <input type="hidden" value="${user.idUser}" name="id" id="id">
-            </div>
+              <form action="vehicles?action=update" method="POST" autocomplete="off">      
+                  <input type="hidden" name="id" value="${vehicle.idVehicle}">
           <div class="row mb-4">
+            
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="form6Example1">Nombre / Razon social</label>
-                <input type="text" value="${user.nameBusiness}" name="nameBusiness" id="form6Example1" class="form-control"  />
-              </div>
-            </div>
-          </div>
-          <div class="row mb-4">
-            <div class="col">
-              <div class="form-outline">
-                <label class="form-label" for="form6Example2">Tipo de documento</label>
-                <select class="form-select" name="documentType" id="form6Example2" aria-label="Default select example">
-                    <option value="DNI" ${(user.documentType == "DNI")? "selected": ""} >DNI</option>
-                    <option value="Carnet" ${(user.documentType == "Carnet")? "selected": ""} >Carnet</option>
+                <label class="form-label" for="form6Example2">Tipo de vehiculo</label>
+                <select class="form-select" name="typeVehicle" id="form6Example2" aria-label="Default select example">
+                    <option value="0">--seleccionar</option>
+                    <option value="taxi" ${vehicle.typeVehicle == 'taxi'?'selected':''}>Taxi</option>
+                    <option value="particular" ${vehicle.typeVehicle == 'particular'?'selected':''}>Particular</option>
                   </select>
-                </div>
-            </div>
-            <div class="col">
-              <div class="form-outline">
-                <label class="form-label" for="form6Example2">Número de documento</label>
-                <input type="text" id="form6Example2" class="form-control" name="documentNumber" value="${user.documentNumber}"/>
               </div>
             </div>
           </div>
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="form6Example2">Dirección</label>
-                <input type="text" id="form6Example2" class="form-control" name="direction" value="${user.direction}"/>
+                <label class="form-label" for="form6Example2">Marca</label>
+                <select class="form-select" name="brand" id="form6Example2" aria-label="Default select example">
+                    <option value="0">--selecionar</option>
+                    <option value="toyota" ${vehicle.brand== 'suzuki'?'selected':''}>Suzuki</option>
+                    <option value="toyota" ${vehicle.brand== 'toyota'?'selected':''}>Toyota</option>
+                    <option value="mercedes" ${vehicle.brand== 'mercedes'?'selected':''}>Mercedes</option>
+                </select>
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="form6Example2">Télefono</label>
-                <input type="text" id="form6Example2" class="form-control" name="phono" value="${user.phono}"/>
+                <label class="form-label" for="form6Example2">Modelo</label>
+                <input type="text" id="form6Example2" class="form-control" name="model" value="${vehicle.model}"/>
               </div>
             </div>
           </div>
+          
+            <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example2">KM</label>
+                <input type="number" id="form6Example2" class="form-control" name="km" value="${vehicle.km}"/>
+              </div>
+            </div>
+          </div>            
+            <div class="row mb-4">
+            <div class="col">
+              <div class="form-floating">
+                  <textarea class="form-control" name="history" placeholder="Leave a comment here" id="floatingTextarea" style="height: 10rem">${vehicle.history}</textarea>
+                <label for="floatingTextarea">Historial</label>
+              </div>
+            </div>            
+          </div>            
 
-          <button type="submit" class="btn btn-primary btn-block mb-4">Guardar</button>
-          <a href="users" class="btn btn-secondary btn-block mb-4">Cancelar</a>
+          <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+          <a href="vehicles" class="btn btn-sm btn-outline-secondary">Cancelar</a>
         </form>
               
             </div>

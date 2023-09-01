@@ -19,9 +19,8 @@ public class Vehicles {
     String plate;
     double km;
     String history;
-    String serialNumber;
 
-    public Vehicles(int idVehicle, int idUsuario, String typeVehicle, String brand, String model, String plate, double km, String history, String serialNumber) {
+    public Vehicles(int idVehicle, int idUsuario, String typeVehicle, String brand, String model, String plate, double km, String history) {
         this.idVehicle = idVehicle;
         this.idUsuario = idUsuario;
         this.typeVehicle = typeVehicle;
@@ -30,10 +29,9 @@ public class Vehicles {
         this.plate = plate;
         this.km = km;
         this.history = history;
-        this.serialNumber = serialNumber;
     }
 
-    public Vehicles(int idVehicle, String nameBusiness, String typeVehicle, String brand, String model, String plate, double km, String history, String serialNumber) {
+    public Vehicles(int idVehicle, String nameBusiness, String typeVehicle, String brand, String model, String plate, double km, String history) {
         this.idVehicle = idVehicle;
         this.nameBusiness = nameBusiness;
         this.typeVehicle = typeVehicle;
@@ -42,8 +40,29 @@ public class Vehicles {
         this.plate = plate;
         this.km = km;
         this.history = history;
-        this.serialNumber = serialNumber;
     }
+
+    public Vehicles(int idUsuario, String typeVehicle, String brand, String model, String plate, double km, String history) {
+        this.idUsuario = idUsuario;
+        this.typeVehicle = typeVehicle;
+        this.brand = brand;
+        this.model = model;
+        this.plate = plate;
+        this.km = km;
+        this.history = history;
+    }
+
+    public Vehicles(int idVehicle,String typeVehicle, String brand, String model, double km, String history) {
+        this.idVehicle = idVehicle;
+        this.typeVehicle = typeVehicle;
+        this.brand = brand;
+        this.model = model;
+        this.km = km;
+        this.history = history;
+    }
+    
+    
+    
 
     public String getNameBusiness() {
         return nameBusiness;
@@ -116,14 +135,6 @@ public class Vehicles {
 
     public void setHistory(String history) {
         this.history = history;
-    }
-
-    public String getSerialNumber() {
-        return serialNumber;
-    }
-
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
     }
     
     
