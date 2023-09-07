@@ -55,6 +55,36 @@ public class ServicesDB {
         }
         
     }
+    public Services showService(int _id){
+        
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        Services service = null;
+        
+        try {
+            ps = con.prepareStatement("SELECT id_service, name FROM services WHERE id_service=?");
+            ps.setInt(1, _id);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int idService = rs.getInt("id_service");
+                String name = rs.getString("name");
+                
+                service = new Services(idService, name);
+                
+            }
+            ps.close();
+            rs.close();
+            return service;
+            
+        }catch(SQLException e) {
+            System.out.println(e.toString());
+            return null;
+            
+        }
+        
+    }
     
     public boolean insertService(Services service){
         PreparedStatement ps;

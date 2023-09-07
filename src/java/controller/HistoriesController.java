@@ -68,7 +68,7 @@ public class HistoriesController extends HttpServlet {
         }else if("edit".equals(action)){
             dispatcher = request.getRequestDispatcher("Users/edit.jsp");
             int id = Integer.parseInt(request.getParameter("id"));
-            Users user = historiesDB.showUser(id);
+            Users user = usersDB.showUser(id);
             System.out.println(user);
             request.setAttribute("user", user);
         }else if("update".equals(action)){
@@ -115,9 +115,18 @@ public class HistoriesController extends HttpServlet {
             request.setAttribute("listUsers", listUsers);
         }else if("profile".equals(action)){
             dispatcher = request.getRequestDispatcher("Histories/historiesVehicle.jsp");
-            int id = Integer.parseInt(request.getParameter("id"));
-            Histories vehicleHistory = vehiclesDB.showVehicle(id);
+            int idVehicle = Integer.parseInt(request.getParameter("id"));
+            Histories vehicleHistory = historiesDB.showHistories(idVehicle);
+            System.out.println(vehicleHistory.getIdClient());
+            int idUser = vehicleHistory.getIdClient();
+            int idService = vehicleHistory.getIdService();
+            Vehicles vehicle = vehiclesDB.showVehicle(idVehicle);
+            Users user = usersDB.showUser(idUser);
+            Services service = servicesDB.showService(idService);
             request.setAttribute("vehicleHistory", vehicleHistory);
+            request.setAttribute("vehicle", vehicle);
+            request.setAttribute("user", user);
+            request.setAttribute("service", service);
         }
         
         dispatcher.forward(request, response);

@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.AutenticationDB;
 import model.AutenticationModel;
 import model.Histories;
@@ -25,62 +26,37 @@ import model.Histories;
 @WebServlet(name = "DashboardController", urlPatterns = {"/dashboard"})
 public class DashboardController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-   
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String action;
         RequestDispatcher dispatcher = null;
-        
+
         action = request.getParameter("action");
-        
-        if(action == null || action.isEmpty()){
-            AutenticationModel autentication = new AutenticationModel();
-            LoginDAO loginDAO = new LoginDAO();
-            String submit = request.getParameter("submit");
-            AutenticationDB autenticationDB = new AutenticationDB();
-            int responses = 0;
-            
-                    String nameUser = request.getParameter("username");
-                    String password = request.getParameter("password");
-                    autentication.setNameAdmin(nameUser);
-                    autentication.setPasswordAdmin(password);
-                    responses = loginDAO.validateLogin(autentication);
-                    System.out.println(responses);
-                    
-                    if(responses != 0){
-                        dispatcher = request.getRequestDispatcher("dashboard.jsp");
-                        List<AutenticationModel> user = autenticationDB.showUser(autentication);
-                        request.setAttribute("user", user);
-                        System.out.println(user);
-                    }else{
-                        dispatcher = request.getRequestDispatcher("/");
-                        request.setAttribute("responses", responses);
-                    }
-              
+        try {
+            if (action != null) {
+                switch (action) {
+                    case "verify":
+                        verify(request, response);
+                        break;
+                    case "close":
+                        close(request, response);
+                        break;
+                    default:
+                        response.sendRedirect("index.jsp");
+                }
+            } else {
+                response.sendRedirect("index.jsp");
+            }
+        } catch (Exception e) {
+            try {
+                this.getServletConfig().getServletContext().getRequestDispatcher("message-error.jsp").forward(request, response);
+            } catch (Exception ex) {
+                System.out.println("Error. " + e.getMessage());
+            }
         }
-            
-        dispatcher.forward(request, response);
+
     }
 
     /**
@@ -106,5 +82,44 @@ public class DashboardController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void verify(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+        HttpSession session;
+
+        AutenticationModel autentication = new AutenticationModel();
+        LoginDAO loginDAO = new LoginDAO();
+        String submit = request.getParameter("submit");
+        AutenticationDB autenticationDB = new AutenticationDB();
+        int responses = 0;
+
+        String nameUser = request.getParameter("username");
+        String password = request.getParameter("password");
+        autentication.setNameAdmin(nameUser);
+        autentication.setPasswordAdmin(password);
+
+        responses = loginDAO.validateLogin(autentication);
+
+        if (responses == 1) {
+            session = request.getSession();
+            session.setAttribute("admin", autentication);
+            
+            request.setAttribute("responses", responses);
+            request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+        } else{
+            request.setAttribute("responses", responses);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
+
+    }
+
+    private void close(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        HttpSession session = request.getSession();
+        
+        session.setAttribute("usuario", null);
+        
+        session.invalidate();
+        response.sendRedirect("index.jsp");
+    }
 
 }

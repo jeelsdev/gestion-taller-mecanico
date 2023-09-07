@@ -22,7 +22,10 @@ public class Histories {
     String nameUser;
     String methodPay;
 
-    
+
+    public Histories(){
+        
+    }
 
     public Histories(int idHistory, int idVehicle, int idService, int idClient, int idTicket, String entryDate, String outputDate) {
         this.idHistory = idHistory;

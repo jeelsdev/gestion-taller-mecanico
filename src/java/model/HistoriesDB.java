@@ -68,32 +68,33 @@ public class HistoriesDB {
         
     }
     
-    public Users showUser(int _id){
+    public Histories showHistories(int _id){
         
         PreparedStatement ps; 
         ResultSet rs;
-        Users user = null;
+        Histories history = null;
+        Histories vehicleHistory = null;
         
         try{
             
-            ps = con.prepareStatement("SELECT id_user, name_business, document_type, document_number, direction, phono, email FROM users WHERE id_user=?");
+            ps = con.prepareStatement("SELECT id_history, id_vehicle, id_service, id_client, id_ticket, entry_date, output_date FROM histories WHERE id_vehicle=?");
             ps.setInt(1, _id);
             rs = ps.executeQuery();
             
             while(rs.next()){
-                int idUser = rs.getInt("id_user");
-                String nameBusiness = rs.getString("name_business");
-                String documentType = rs.getString("document_type");
-                int documentNumber = rs.getInt("document_number");
-                String direction = rs.getString("direction");
-                String phono = rs.getString("phono");
-                String email = rs.getString("email");
+                int idHistory = rs.getInt("id_history");
+                int idVehicle = rs.getInt("id_vehicle");
+                int idUser = rs.getInt("id_client");
+                int idService = rs.getInt("id_service");
+                int idTicket = rs.getInt("id_ticket");
+                String entryDate = rs.getString("entry_date");
+                String outputDate = rs.getString("output_date");
                 
-                user = new Users(idUser, nameBusiness, documentType, documentNumber, direction, phono, email);
+                vehicleHistory = new Histories(idHistory, idVehicle, idService, idUser, idTicket, entryDate, outputDate);
                 
                                               
             }
-            return user;
+            return vehicleHistory;
             
         }catch(Exception e){
             System.out.println(e.toString());

@@ -70,10 +70,9 @@ public class VehiclesController extends HttpServlet {
             String typeVehicle = request.getParameter("typeVehicle");
             String brand = request.getParameter("brand");
             String model = request.getParameter("model");
-            String plate = request.getParameter("plate");
             double km = Double.parseDouble(request.getParameter("km"));
             String history = request.getParameter("history");
-            Vehicles updateVehicle = new Vehicles(idVehicle, typeVehicle, brand, model, plate, km, history);
+            Vehicles updateVehicle = new Vehicles(idVehicle, typeVehicle, brand, model, km, history);
             boolean ser = vehiclesDB.updateVehicle(updateVehicle);
             System.out.println(ser + "serrrrrr!!!!!!!!!");
             
