@@ -6,6 +6,10 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -88,25 +92,33 @@ public class HistoriesController extends HttpServlet {
             request.setAttribute("listUsers", listUsers);
         }else if("create".equals(action)){
             dispatcher = request.getRequestDispatcher("Histories/create.jsp");
-            List<Users> listUsers = usersDB.listUsers();
+            int idVehicle = Integer.parseInt(request.getParameter("id"));
+            int idUser = vehiclesDB.getUser(idVehicle);
             List<Services> listServices = servicesDB.listServices();
-            request.setAttribute("listUsers", listUsers);
             request.setAttribute("listServices", listServices);
+            request.setAttribute("idVehicle", idVehicle);
+            request.setAttribute("idUser", idUser);
             
         }else if("insert".equals(action)){
-            String nameBusiness = request.getParameter("nameBusiness");
-            String documentType = request.getParameter("documentType");
-            int documentNumber = Integer.parseInt(request.getParameter("documentNumber"));
-            String direction = request.getParameter("direction");
-            String phono = request.getParameter("phono");
-            String email = request.getParameter("email");
+            int idUser = Integer.parseInt(request.getParameter("idUser"));
+            int idVehicle = Integer.parseInt(request.getParameter("idVehicle"));
+            int idService = Integer.parseInt(request.getParameter("service"));
+            int idTicket = Integer.parseInt(request.getParameter("idTicket"));
+            double amount = Double.parseDouble(request.getParameter("amount"));
+            String entry = request.getParameter("entryDate");
+            System.out.println(entry);
+            DateTimeFormatter format = new DateTimeFormatterBuilder().append(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toFormatter();
+            LocalDate entryDate = LocalDate.parse(entry, format);
+            LocalDate outputDate = LocalDate.parse(request.getParameter("outputDate"), format);
+            String description = request.getParameter("description");
             
-            Users insertUser = new Users(nameBusiness, documentType, documentNumber, direction, phono, email);
-            historiesDB.insertUser(insertUser);
+            Histories insertHistory = new Histories(idVehicle, idService, idUser, idTicket, entryDate, outputDate,description,amount);
+            boolean result = historiesDB.insertHistory(insertHistory);
+            System.out.println("resulll insertt " + result);
             
-            dispatcher = request.getRequestDispatcher("Users/index.jsp");
-            List<Histories> listUsers = historiesDB.listHistories();
-            request.setAttribute("listUsers", listUsers);
+            dispatcher = request.getRequestDispatcher("Histories/index.jsp");
+             List<Histories> listHistories = historiesDB.listHistories();
+            request.setAttribute("listHistories", listHistories);
         }else if("delete".equals(action)){
             int id = Integer.parseInt(request.getParameter("idUser"));
             historiesDB.deleteUser(id);
@@ -117,16 +129,28 @@ public class HistoriesController extends HttpServlet {
             dispatcher = request.getRequestDispatcher("Histories/historiesVehicle.jsp");
             int idVehicle = Integer.parseInt(request.getParameter("id"));
             Histories vehicleHistory = historiesDB.showHistories(idVehicle);
-            System.out.println(vehicleHistory.getIdClient());
-            int idUser = vehicleHistory.getIdClient();
-            int idService = vehicleHistory.getIdService();
-            Vehicles vehicle = vehiclesDB.showVehicle(idVehicle);
-            Users user = usersDB.showUser(idUser);
-            Services service = servicesDB.showService(idService);
-            request.setAttribute("vehicleHistory", vehicleHistory);
-            request.setAttribute("vehicle", vehicle);
-            request.setAttribute("user", user);
-            request.setAttribute("service", service);
+            if(vehicleHistory == null){
+                Vehicles vehicle = vehiclesDB.showVehicle(idVehicle);
+                int idUser = vehiclesDB.getUser(idVehicle);
+                Users user = usersDB.showUser(idUser);
+                request.setAttribute("idVehicle", idVehicle);
+                request.setAttribute("vehicle", vehicle);
+                request.setAttribute("user", user);
+            }else {
+                List<Histories> listHistories = historiesDB.listHistories(idVehicle);
+                int idUser = vehicleHistory.getIdClient();
+                int idService = vehicleHistory.getIdService();
+                Vehicles vehicle = vehiclesDB.showVehicle(idVehicle);
+                Users user = usersDB.showUser(idUser);
+                Services service = servicesDB.showService(idService);
+                System.out.println(vehicle.getIdVehicle());
+
+                request.setAttribute("listHistories", listHistories);
+                request.setAttribute("idVehicle", idVehicle);
+                request.setAttribute("vehicle", vehicle);
+                request.setAttribute("user", user);
+                request.setAttribute("service", service);
+            }
         }
         
         dispatcher.forward(request, response);

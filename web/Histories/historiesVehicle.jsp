@@ -115,7 +115,7 @@
                                 <div class="tab-content pt-2">
 
                                     <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                                        
+
                                         <h5 class="card-title text-center">Detalles del vehiculo</h5>
 
                                         <div class="row">
@@ -154,31 +154,67 @@
 
         </main>
 
-        <main id="main" class="main" style="margin-top: -0.25rem;">
+        <main class="main" id="main" style="margin-top: -0.25rem;">
+            <section class="section profile d-flex justify-content-between">
+                <div class="pagetitle">
+                    <h1>Historias</h1>
 
-            <section class="section profile">
-                <div class="row">
+                </div>
+                <a href="histories?action=create&id=<c:out value="${idVehicle}" />" class="btn btn-success">Crear nuevo historial</a>
+            </section>
+        </main>
 
-                    <div class="card">
-                        <div class="card-body pt-3">
-                            <div class="tab-content pt-2">
 
-                                <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                                    <h5 class="card-title">Hitorial</h5>
-                                    <p class="small fst-italic">${service.getName()}</p>
-                                    <p class="small fst-italic">${vehicle.getHistory()}</p>
+        <c:forEach var="history" items="${listHistories}">
 
+            <main id="main" class="main" style="margin-top: -0.25rem;">
+                <section class="section profile">
+                    <div class="row">
+
+                        <div class="card">
+                            <div class="card-body pt-3">
+                                <div class="tab-content pt-2">
+
+                                    <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6">
+                                                <h5 class="card-title"><span>Servicio brindado:</span> ${history.getNameService()}</h5>
+                                                <div class="card-title"><span>Metodo de pago:</span> ${history.getMethodPay()}</div>
+                                                <div class="card-title"><span>Monto de pago:</span> ${history.getNameUser()}</div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6">
+                                                <div class="card-title"><span>Fechad de entrada:</span> ${history.getEntryDate()}</div>
+                                                <div class="card-title"><span>Fechad de salida:</span> ${history.getOutputDate()}</div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 label ">Descripcion</div>
+                                                    <p>${history.getBrandVehicle()}</p>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
+
 
 
                             </div>
 
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-        </main>
+                        </div>
+
+                    </div>
+                    </div>
+                    </div>
+                </section>
+            </main>
+        </c:forEach>  
 
 
 

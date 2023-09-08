@@ -8,6 +8,7 @@ import config.Connextion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +50,14 @@ public class AutenticationDB {
         }catch(Exception e){
             System.out.println(e.toString());
             return null;
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    /* Ignored */
+                }
+            }
         }
     }
     

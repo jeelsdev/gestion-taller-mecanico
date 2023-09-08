@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author User
@@ -16,6 +18,10 @@ public class Histories {
     int idTicket;
     String entryDate;
     String outputDate;
+    LocalDate entry;
+    LocalDate output;
+    String description;
+    double amount;
     
     String brandVehicle;
     String nameService;
@@ -54,6 +60,19 @@ public class Histories {
         this.entryDate = entryDate;
         this.outputDate = outputDate;
     }
+
+    public Histories(int idVehicle, int idService, int idClient, int idTicket, LocalDate entryDate, LocalDate outputDate, String description, double amount) {
+        this.idVehicle = idVehicle;
+        this.idService = idService;
+        this.idClient = idClient;
+        this.idTicket = idTicket;
+        this.entry = entryDate;
+        this.output = outputDate;
+        this.description = description;
+        this.amount = amount;
+    }
+    
+    
     
     
     
@@ -144,6 +163,41 @@ public class Histories {
     public void setMethodPay(String methodPay) {
         this.methodPay = methodPay;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public LocalDate getEntry() {
+        return entry;
+    }
+
+    public void setEntry(LocalDate entry) {
+        this.entry = entry;
+    }
+
+    public LocalDate getOutput() {
+        return output;
+    }
+
+    public void setOutput(LocalDate output) {
+        this.output = output;
+    }
+    
+    
+    
     
     
 }

@@ -52,6 +52,14 @@ public class ServicesDB {
             System.out.println(e.toString());
             return null;
             
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    /* Ignored */
+                }
+            }
         }
         
     }
@@ -82,6 +90,14 @@ public class ServicesDB {
             System.out.println(e.toString());
             return null;
             
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    /* Ignored */
+                }
+            }
         }
         
     }
@@ -102,6 +118,14 @@ public class ServicesDB {
         }catch(SQLException e){
             System.out.println(e.toString());
             return false;
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    /* Ignored */
+                }
+            }
         }
     }
     
@@ -119,6 +143,14 @@ public class ServicesDB {
         }catch(SQLException e){
             System.out.println(e.toString());
             return false;
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    /* Ignored */
+                }
+            }
         }
     }
     

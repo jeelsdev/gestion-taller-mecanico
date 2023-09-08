@@ -46,7 +46,6 @@ public class VehiclesDB {
                 String history = rs.getString("history");
                 
                 Vehicles vehicles = new Vehicles(idVehicle, nameBusiness, typeVehicle, brand, model, plate, km, history);
-                
                 list.add(vehicles);
             }
             ps.close();
@@ -57,6 +56,14 @@ public class VehiclesDB {
             System.out.println(e.toString());
             return null;
             
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    /* Ignored */
+                }
+            }
         }
         
     }
@@ -90,6 +97,14 @@ public class VehiclesDB {
         }catch(Exception e){
             System.out.println(e.toString());
             return null;
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    /* Ignored */
+                }
+            }
         }
         
     }
@@ -128,6 +143,33 @@ public class VehiclesDB {
         
     }
     
+    
+    public int getUser(int _id){
+        
+        PreparedStatement ps; 
+        ResultSet rs;
+        Vehicles vehicle = null;
+        int idUser = 0;
+        
+        try{
+            
+            ps = con.prepareStatement("SELECT id_user FROM vehicles WHERE id_vehicle=?");
+            ps.setInt(1, _id);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                idUser = rs.getInt("id_user");
+                                              
+            }
+            return idUser;
+            
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return idUser;
+        }
+        
+    }
+    
     public boolean insertVehicle(Vehicles vehicle){
         PreparedStatement ps;
         
@@ -150,6 +192,14 @@ public class VehiclesDB {
         }catch(SQLException e){
             System.out.println(e.toString());
             return false;
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    /* Ignored */
+                }
+            }
         }
     }
     
@@ -174,6 +224,14 @@ public class VehiclesDB {
         }catch(SQLException e){
             System.out.println(e.toString());
             return false;
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    /* Ignored */
+                }
+            }
         }
     }
     
@@ -190,6 +248,14 @@ public class VehiclesDB {
         }catch(SQLException e){
             System.out.println(e.toString());
             return false;
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    /* Ignored */
+                }
+            }
         }
     }
     
