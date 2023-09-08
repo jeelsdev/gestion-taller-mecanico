@@ -19,7 +19,7 @@ import model.UsersDB;
  *
  * @author User
  */
-@WebServlet(name = "UsersController", urlPatterns = {"/Users"})
+@WebServlet(name = "UsersController", urlPatterns = {"/users"})
 public class UsersController extends HttpServlet {
 
     @Override
@@ -52,7 +52,7 @@ public class UsersController extends HttpServlet {
             String phono = request.getParameter("phono");
             
             Users updateUser = new Users(idUser, nameBusiness, documentType, documentNumber, direction, phono);
-            boolean bolluser = usersDB.updateUser(updateUser);
+            usersDB.updateUser(updateUser);
             
             dispatcher = request.getRequestDispatcher("Users/index.jsp");
             List<Users> listUsers = usersDB.listUsers();
@@ -74,9 +74,8 @@ public class UsersController extends HttpServlet {
             List<Users> listUsers = usersDB.listUsers();
             request.setAttribute("listUsers", listUsers);
         }else if("delete".equals(action)){
-            int id = Integer.parseInt(request.getParameter("id"));
-            boolean userss= usersDB.deleteUser(id);
-            System.out.println(userss);
+            int id = Integer.parseInt(request.getParameter("idUser"));
+            usersDB.deleteUser(id);
             dispatcher = request.getRequestDispatcher("Users/index.jsp");
             List<Users> listUsers = usersDB.listUsers();
             request.setAttribute("listUsers", listUsers);
