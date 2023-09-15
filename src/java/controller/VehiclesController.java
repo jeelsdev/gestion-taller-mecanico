@@ -98,6 +98,7 @@ public class VehiclesController extends HttpServlet {
             dispatcher = request.getRequestDispatcher("Vehicles/index.jsp");
             List<Vehicles> listVehicles = vehiclesDB.listVehicles();
             request.setAttribute("listVehicles", listVehicles);
+            System.out.println("Helooooo");
         }else if("delete".equals(action)){
             int id = Integer.parseInt(request.getParameter("idUser"));
             usersDB.deleteUser(id);

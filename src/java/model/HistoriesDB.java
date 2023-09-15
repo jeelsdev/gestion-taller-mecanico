@@ -36,7 +36,7 @@ public class HistoriesDB {
             ps = con.prepareStatement(
                     "SELECT h.id_history, v.brand, s.name, u.name_business, t.pay_method, h.entry_date, h.output_date "
                     + "FROM histories h INNER JOIN vehicles v ON h.id_vehicle = v.id_vehicle "
-                    + "INNER JOIN services s ON h.id_vehicle = s.id_service "
+                    + "INNER JOIN services s ON h.id_service = s.id_service "
                     + "INNER JOIN users u ON h.id_client = u.id_user "
                     + "INNER JOIN ticket t ON h.id_ticket = t.id_ticket;"
             );
@@ -202,14 +202,6 @@ public class HistoriesDB {
         } catch (SQLException e) {
             System.out.println(e.toString());
             return false;
-        }finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                    /* Ignored */
-                }
-            }
         }
     }
 
@@ -226,14 +218,6 @@ public class HistoriesDB {
         } catch (SQLException e) {
             System.out.println(e.toString());
             return false;
-        }finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                    /* Ignored */
-                }
-            }
         }
     }
 

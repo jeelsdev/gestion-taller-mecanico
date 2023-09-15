@@ -83,7 +83,7 @@
                 <label class="form-label" for="form6Example2">Tipo de documento</label>
                 <select class="form-select" name="documentType" id="form6Example2" aria-label="Default select example">
                     <option value="DNI" ${(user.documentType == "DNI")? "selected": ""} >DNI</option>
-                    <option value="Carnet" ${(user.documentType == "Carnet")? "selected": ""} >Carnet</option>
+                    <option value="CARNET" ${(user.documentType == "CARNET")? "selected": ""} >Carnet</option>
                   </select>
                 </div>
             </div>

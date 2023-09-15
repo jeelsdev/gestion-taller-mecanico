@@ -192,14 +192,6 @@ public class VehiclesDB {
         }catch(SQLException e){
             System.out.println(e.toString());
             return false;
-        }finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                    /* Ignored */
-                }
-            }
         }
     }
     
@@ -224,14 +216,6 @@ public class VehiclesDB {
         }catch(SQLException e){
             System.out.println(e.toString());
             return false;
-        }finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                    /* Ignored */
-                }
-            }
         }
     }
     
@@ -248,14 +232,6 @@ public class VehiclesDB {
         }catch(SQLException e){
             System.out.println(e.toString());
             return false;
-        }finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                    /* Ignored */
-                }
-            }
         }
     }
     

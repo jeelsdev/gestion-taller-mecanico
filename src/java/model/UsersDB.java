@@ -32,7 +32,7 @@ public class UsersDB {
         List<Users> list = new ArrayList<>();
         
         try {
-            ps = con.prepareStatement("SELECT id_user, name_business, document_type, document_number, direction, phono, email FROM users");
+            ps = con.prepareStatement("SELECT id_user, name_business, document_type, document_number, direction, phono, email FROM users ORDER BY id_user DESC");
             rs = ps.executeQuery();
             
             while(rs.next()){
@@ -131,14 +131,6 @@ public class UsersDB {
         }catch(SQLException e){
             System.out.println(e.toString());
             return false;
-        }finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                    /* Ignored */
-                }
-            }
         }
     }
     
@@ -163,14 +155,6 @@ public class UsersDB {
         }catch(SQLException e){
             System.out.println(e.toString());
             return false;
-        }finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                    /* Ignored */
-                }
-            }
         }
     }
     
@@ -187,14 +171,6 @@ public class UsersDB {
         }catch(SQLException e){
             System.out.println(e.toString());
             return false;
-        }finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                    /* Ignored */
-                }
-            }
         }
     }
     

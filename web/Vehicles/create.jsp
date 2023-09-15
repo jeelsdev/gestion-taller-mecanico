@@ -97,6 +97,15 @@
                     <option value="0">--selecionar</option>
                     <option value="toyota">Toyota</option>
                     <option value="mercedes">Mercedes</option>
+                    <option value="suzuki">Suzuki</option>
+                    <option value="honda">Honda</option>
+                    <option value="maxda">Maxda</option>
+                    <option value="sudary">Sudary</option>
+                    <option value="tata">Tata</option>
+                    <option value="tesla">Tesla</option>
+                    <option value="volkwagen">Volkwagen</option>
+                    <option value="geely">Geely</option>
+                    <option value="ford">Ford</option>
                 </select>
               </div>
             </div>

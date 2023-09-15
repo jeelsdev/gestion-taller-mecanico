@@ -86,9 +86,17 @@
                 <label class="form-label" for="form6Example2">Marca</label>
                 <select class="form-select" name="brand" id="form6Example2" aria-label="Default select example">
                     <option value="0">--selecionar</option>
-                    <option value="toyota" ${vehicle.brand== 'suzuki'?'selected':''}>Suzuki</option>
+                    <option value="suzuki" ${vehicle.brand== 'suzuki'?'selected':''}>Suzuki</option>
                     <option value="toyota" ${vehicle.brand== 'toyota'?'selected':''}>Toyota</option>
                     <option value="mercedes" ${vehicle.brand== 'mercedes'?'selected':''}>Mercedes</option>
+                    <option value="honda" ${vehicle.brand== 'honda'?'selected':''}>Honda</option>
+                    <option value="maxda" ${vehicle.brand== 'maxda'?'selected':''}>Maxda</option>
+                    <option value="sudary" ${vehicle.brand== 'sudary'?'selected':''}>Sudary</option>
+                    <option value="tata" ${vehicle.brand== 'tata'?'selected':''}>Tata</option>
+                    <option value="tesla" ${vehicle.brand== 'tesla'?'selected':''}>Tesla</option>
+                    <option value="volkwagen" ${vehicle.brand== 'volkwagen'?'selected':''}>Volkwagen</option>
+                    <option value="geely" ${vehicle.brand== 'geely'?'selected':''}>Geely</option>
+                    <option value="ford" ${vehicle.brand== 'ford'?'selected':''}>Ford</option>
                 </select>
               </div>
             </div>
