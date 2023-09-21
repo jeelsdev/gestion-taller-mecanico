@@ -65,7 +65,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Servicios</h5>
-              <table class="table">
+              <table class="table datatable">
                 <thead>
                   <tr class="bg-light">
               <th scope="col" width="40%">#</th>

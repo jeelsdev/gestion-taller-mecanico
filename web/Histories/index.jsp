@@ -66,7 +66,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Historiales</h5>
-              <table class="table">
+              <table class="table datatable">
                 <thead>
             <tr class="bg-light">
               <th scope="col" width="5%">#</th>

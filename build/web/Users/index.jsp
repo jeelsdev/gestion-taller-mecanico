@@ -69,7 +69,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Usuarios</h5>
-              <table class="table">
+              <table class="table datatable">
                 <thead>
                   <tr class="bg-light">
                     <th scope="col" width="5%" class="text-center">#</th>
@@ -79,7 +79,8 @@
                     <th scope="col" width="15%" class="text-center">Dirección</th>
                     <th scope="col" width="10%" class="text-center">Teléfono</th>
                     <th scope="col" width="30%" class="text-center">Email</th>
-                    <th scope="col" width="30%" class="text-center">Acciones</th>
+                    <th scope="col" width="15%" class="text-center"></th>
+                    <th scope="col" width="15%" class="text-center"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -92,9 +93,12 @@
                          <td class="text-center"><c:out value="${user.direction}" /></td>
                          <td class="text-center"><c:out value="${user.phono}" /></td>
                          <td class="text-center"><c:out value="${user.email}" /></td>
-                         <td class="d-flex flex-row text-center"><a href="users?action=edit&id=<c:out value="${user.idUser}" />" class="btn btn-sm btn-primary mx-2">
+                         <td class="d-flex flex-row text-center" style="display: flex"><a href="users?action=edit&id=<c:out value="${user.idUser}" />" class="btn btn-sm btn-primary mx-2">
                              <i class="bi bi-pencil-square"></i>
                              </a>
+                                 
+                             </td>
+                            <td class="d-flex flex-row text-center" style="display: flex">
                                  <form action="users?action=delete" method="POST" onsubmit="return confirm('Estas seguro de eliminar el servicio??')">
                                    <input type="hidden" name="idUser" value="<c:out value="${user.idUser}" />">
                                    <button type="submit" class="btn btn-sm btn-danger"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
