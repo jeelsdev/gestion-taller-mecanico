@@ -112,7 +112,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">Modelo</label>
-                <input type="text" id="form6Example2" class="form-control" name="model" value=""/>
+                <input type="text" id="form6Example2" class="form-control" name="model" value="" required />
               </div>
             </div>
           </div>
@@ -121,14 +121,14 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">Placa</label>
-                 <input type="text" id="form6Example2" class="form-control" name="plate" value=""/>
+                 <input type="text" id="form6Example2" class="form-control" name="plate" value="" required />
 
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">KM</label>
-                <input type="number" id="form6Example2" class="form-control" name="km" value=""/>
+                <input type="number" id="form6Example2" class="form-control" name="km" value="" required />
               </div>
             </div>
           </div>            

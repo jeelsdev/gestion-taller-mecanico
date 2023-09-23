@@ -103,7 +103,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">Modelo</label>
-                <input type="text" id="form6Example2" class="form-control" name="model" value="${vehicle.model}"/>
+                <input type="text" id="form6Example2" class="form-control" name="model" value="${vehicle.model}" required />
               </div>
             </div>
           </div>

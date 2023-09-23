@@ -69,7 +69,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example1">Nombre del servicio</label>
-                <input type="text" value="" name="nameService" id="form6Example1" class="form-control"  />
+                <input type="text" value="" name="nameService" id="form6Example1" class="form-control" required />
               </div>
             </div>
           </div>

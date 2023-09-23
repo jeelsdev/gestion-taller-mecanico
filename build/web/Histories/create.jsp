@@ -54,7 +54,7 @@
         <main id="main" class="main">
 
             <div class="pagetitle">
-                <h1>Craer historial</h1>
+                <h1>Crear historial</h1>
             </div><!-- End Page Title -->
 
             <section class="section">
@@ -97,21 +97,21 @@
                                         <div class="col">
                                             <div class="form-outline">
                                                 <label class="form-label" for="form6Example2">Monto</label>
-                                                <input type="number" id="form6Example2" class="form-control" name="amount" value=""/>
+                                                <input type="number" id="form6Example2" class="form-control" name="amount" value="" required/>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row mb-4">
                                         <div class="col">
                                             <div class="form-outline">
-                                                <label class="form-label" for="form6Example2">Dirección</label>
-                                                <input type="date" id="form6Example2" class="form-control" name="entryDate" value=""/>
+                                                <label class="form-label" for="form6Example2">Fecha de entrada</label>
+                                                <input type="date" id="form6Example2" class="form-control" name="entryDate" value="" required/>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-outline">
-                                                <label class="form-label" for="form6Example2">Télefono</label>
-                                                <input type="date" id="form6Example2" class="form-control" name="outputDate" value=""/>
+                                                <label class="form-label" for="form6Example2">Fecha de salida</label>
+                                                <input type="date" id="form6Example2" class="form-control" name="outputDate" value="" required/>
                                             </div>
                                         </div>
                                     </div>

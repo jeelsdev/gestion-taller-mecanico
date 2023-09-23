@@ -73,7 +73,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example1">Nombre / Razon social</label>
-                <input type="text" value="${user.nameBusiness}" name="nameBusiness" id="form6Example1" class="form-control"  />
+                <input type="text" value="${user.nameBusiness}" name="nameBusiness" id="form6Example1" class="form-control" required />
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">Número de documento</label>
-                <input type="text" id="form6Example2" class="form-control" name="documentNumber" value="${user.documentNumber}"/>
+                <input type="text" id="form6Example2" class="form-control" name="documentNumber" value="${user.documentNumber}" required />
               </div>
             </div>
           </div>
@@ -98,13 +98,13 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">Dirección</label>
-                <input type="text" id="form6Example2" class="form-control" name="direction" value="${user.direction}"/>
+                <input type="text" id="form6Example2" class="form-control" name="direction" value="${user.direction}" required />
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">Télefono</label>
-                <input type="text" id="form6Example2" class="form-control" name="phono" value="${user.phono}"/>
+                <input type="text" id="form6Example2" class="form-control" name="phono" value="${user.phono}" required />
               </div>
             </div>
           </div>

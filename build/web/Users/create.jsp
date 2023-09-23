@@ -54,7 +54,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Craer usuario</h1>
+      <h1>Crear usuario</h1>
     </div><!-- End Page Title -->
 
     <section class="section">
@@ -69,7 +69,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example1">Nombre / Razon social</label>
-                <input type="text" value="" name="nameBusiness" id="form6Example1" class="form-control"  />
+                <input type="text" value="" name="nameBusiness" id="form6Example1" class="form-control" required />
               </div>
             </div>
           </div>
@@ -86,7 +86,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">Número de documento</label>
-                <input type="number" id="form6Example2" class="form-control" name="documentNumber" value=""/>
+                <input type="number" id="form6Example2" class="form-control" name="documentNumber" value="" required />
               </div>
             </div>
           </div>
@@ -94,20 +94,20 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">Dirección</label>
-                <input type="text" id="form6Example2" class="form-control" name="direction" value=""/>
+                <input type="text" id="form6Example2" class="form-control" name="direction" value="" required />
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">Télefono</label>
-                <input type="number" id="form6Example2" class="form-control" name="phono" value=""/>
+                <input type="number" id="form6Example2" class="form-control" name="phono" value="" required/>
               </div>
             </div>
           </div>
             
           <div class="form-outline mb-4">
             <label class="form-label" for="form6Example3">Email</label>
-            <input type="email" name="email" value="" id="form6Example3" class="form-control" />
+            <input type="email" name="email" value="" id="form6Example3" class="form-control" required />
           </div>
 
           <button type="submit" class="btn btn-primary btn-block">Guardar</button>
