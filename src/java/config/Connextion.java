@@ -9,7 +9,8 @@ public class Connextion {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             //Connection conexion = DriverManager.getConnection("jdbc:mysql://51.89.190.173:3306/piad515g3?serverTimezone=UTC", "piad515", "senati2023");
-             Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/machanical-workshop?serverTimezone=UTC", "root", "");
+            //Connection conexion = DriverManager.getConnection("jdbc:mysql://10.100.26.67:3306/machanical-workshop?serverTimezone=UTC", "root", "HISyrf07268");
+            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/machanical-workshop?serverTimezone=UTC", "root", "");
             System.out.println("successful connection!!");
             return conexion;
         }catch(ClassNotFoundException | SQLException e) {
