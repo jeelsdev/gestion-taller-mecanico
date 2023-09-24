@@ -38,7 +38,7 @@ public class HistoriesDB {
                     + "FROM histories h INNER JOIN vehicles v ON h.id_vehicle = v.id_vehicle "
                     + "INNER JOIN services s ON h.id_service = s.id_service "
                     + "INNER JOIN users u ON h.id_client = u.id_user "
-                    + "INNER JOIN ticket t ON h.id_ticket = t.id_ticket;"
+                    + "INNER JOIN ticket t ON h.id_ticket = t.id_ticket ORDER BY h.id_history DESC;"
             );
             rs = ps.executeQuery();
 
@@ -120,7 +120,7 @@ public class HistoriesDB {
 
         try {
 
-            ps = con.prepareStatement("SELECT id_history, s.name, t.pay_method, entry_date, output_date, descriptions, amount FROM histories h INNER JOIN services s ON h.id_service = s.id_service INNER JOIN ticket t ON h.id_ticket = t.id_ticket WHERE id_vehicle=?");
+            ps = con.prepareStatement("SELECT id_history, s.name, t.pay_method, entry_date, output_date, descriptions, amount FROM histories h INNER JOIN services s ON h.id_service = s.id_service INNER JOIN ticket t ON h.id_ticket = t.id_ticket WHERE id_vehicle=? ORDER BY h.id_history DESC");
             ps.setInt(1, _id);
             rs = ps.executeQuery();
 

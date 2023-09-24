@@ -4,6 +4,7 @@
     Author     : User
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -165,57 +166,86 @@
         </main>
 
 
-        <c:forEach var="history" items="${listHistories}">
+        <main id="main" class="main" style="margin-top: -0.25rem;">
+            <section class="section profile">
+                <div class="row">
+                    <section class="section dashboard">
+                        <div class="row">
 
-            <main id="main" class="main" style="margin-top: -0.25rem;">
-                <section class="section profile">
-                    <div class="row">
+                            <!-- Right side columns -->
+                            <div class="col-lg-12">
 
-                        <div class="card">
-                            <div class="card-body pt-3">
-                                <div class="tab-content pt-2">
+                                <!-- Recent Activity -->
+                                <div class="card">
 
-                                    <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6">
-                                                <h5 class="card-title"><span>Servicio brindado:</span> ${history.getNameService()}</h5>
-                                                <div class="card-title"><span>Metodo de pago:</span> ${history.getMethodPay()}</div>
-                                                <div class="card-title"><span>Monto de pago:</span> ${history.getNameUser()}</div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="card-title"><span>Fechad de entrada:</span> ${history.getEntryDate()}</div>
-                                                <div class="card-title"><span>Fechad de salida:</span> ${history.getOutputDate()}</div>
-                                            </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Actividades <span>| todos</span></h5>
+
+                                        <div class="activity">
+                                            <% int count = 1;
+
+                                                ArrayList<String> colors = new ArrayList<String>(19);
+
+                                                colors.add("");
+                                                colors.add("danger");
+                                                colors.add("dark");
+                                                colors.add("primary");
+                                                colors.add("success");
+                                                colors.add("warning");
+                                                colors.add("muted");
+                                                colors.add("danger");
+                                                colors.add("dark");
+                                                colors.add("primary");
+                                                colors.add("success");
+                                                colors.add("warning");
+                                                colors.add("muted");
+                                                colors.add("danger");
+                                                colors.add("dark");
+                                                colors.add("primary");
+                                                colors.add("success");
+                                                colors.add("warning");
+                                                colors.add("muted");
+                                            %>
+                                            
+                                            <c:forEach var="history" items="${listHistories}"> 
+                                                <div class="activity-item d-flex justify-content-start">
+                                                    <div class="activite-label"><%= count%></div>
+                                                    <i class='bi bi-circle-fill activity-badge text-<%= colors.get(count)%> align-self-start'></i>
+                                                    <div class="activity-content" style="margin-left: 15%">
+
+                                                        <div class="row" sty>
+                                                            <div class="col-lg-6 col-md-6 ">
+                                                                <h5 class="card-title"><span>Servicio brindado:</span> ${history.getNameService()}</h5>
+                                                                <div class="card-title"><span>Metodo de pago:</span> ${history.getMethodPay()}</div>
+                                                                <div class="card-title"><span>Monto de pago:</span> ${history.getNameUser()}</div>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6">
+                                                                <div class="card-title"><span>Fechad de entrada:</span> ${history.getEntryDate()}</div>
+                                                                <div class="card-title"><span>Fechad de salida:</span> ${history.getOutputDate()}</div>
+                                                                <div class="card-title"><span>Descripción:</span> ${history.getBrandVehicle()}</div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div><!-- End activity item-->
+                                                <% count += 1; %>
+                                            </c:forEach>
+                                            
+
                                         </div>
 
-
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-md-6 label ">Descripcion</div>
-                                                    <p>${history.getBrandVehicle()}</p>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
                                     </div>
-                                </div>
+                                </div><!-- End Recent Activity -->
 
 
-
-                            </div>
-
+                            </div><!-- End Right side columns -->
 
                         </div>
-
-                    </div>
-                    </div>
-                    </div>
-                </section>
-            </main>
-        </c:forEach>  
-
+                    </section>
+                </div>
+            </section>
+        </main>
 
 
         <jsp:include page="../layaout/footer.jsp"/>

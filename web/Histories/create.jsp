@@ -1,10 +1,12 @@
+<%@page import="java.time.LocalDate"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
 <%
     if (session.getAttribute("admin") != null) {
-
+    
+    LocalDate date = LocalDate.now();
 %>
 
 <!DOCTYPE html>
@@ -105,7 +107,7 @@
                                         <div class="col">
                                             <div class="form-outline">
                                                 <label class="form-label" for="form6Example2">Fecha de entrada</label>
-                                                <input type="date" id="form6Example2" class="form-control" name="entryDate" value="" required/>
+                                                <input type="date" id="form6Example2" class="form-control" name="entryDate" value="<%= date %>" required/>
                                             </div>
                                         </div>
                                         <div class="col">

@@ -55,7 +55,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Craer vehiculo</h1>
+      <h1>Crear vehiculo</h1>
     </div><!-- End Page Title -->
 
     <section class="section">
@@ -71,7 +71,7 @@
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">Propietario</label>
                  <select class="form-select" name="idUser" id="form6Example2" aria-label="Default select example">
-                    <option value="0">--seleccionar--</option>
+                    <option value="1">--seleccionar--</option>
                     <c:forEach var="user" items="${listUsers}">                        
                         <option value="${user.idUser}">${user.nameBusiness}</option>
                     </c:forEach>
@@ -82,7 +82,7 @@
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">Tipo de vehiculo</label>
                 <select class="form-select" name="typeVehicle" id="form6Example2" aria-label="Default select example">
-                    <option value="0">--seleccionar</option>
+                    <option value="taxi">--seleccionar</option>
                     <option value="taxi">Taxi</option>
                     <option value="particular">Particular</option>
                   </select>
@@ -94,7 +94,7 @@
               <div class="form-outline">
                 <label class="form-label" for="form6Example2">Marca</label>
                 <select class="form-select" name="brand" id="form6Example2" aria-label="Default select example">
-                    <option value="0">--selecionar</option>
+                    <option value="toyota">--selecionar</option>
                     <option value="toyota">Toyota</option>
                     <option value="mercedes">Mercedes</option>
                     <option value="suzuki">Suzuki</option>

@@ -116,9 +116,19 @@ public class HistoriesController extends HttpServlet {
             boolean result = historiesDB.insertHistory(insertHistory);
             System.out.println("resulll insertt " + result);
             
-            dispatcher = request.getRequestDispatcher("Histories/index.jsp");
-             List<Histories> listHistories = historiesDB.listHistories();
-            request.setAttribute("listHistories", listHistories);
+            dispatcher = request.getRequestDispatcher("Histories/historiesVehicle.jsp");
+            List<Histories> listHistories = historiesDB.listHistories(idVehicle);
+                Vehicles vehicle = vehiclesDB.showVehicle(idVehicle);
+                Users user = usersDB.showUser(idUser);
+                Services service = servicesDB.showService(idService);
+                System.out.println(vehicle.getIdVehicle());
+
+                request.setAttribute("listHistories", listHistories);
+                request.setAttribute("idVehicle", idVehicle);
+                request.setAttribute("vehicle", vehicle);
+                request.setAttribute("user", user);
+                request.setAttribute("service", service);
+            
         }else if("delete".equals(action)){
             int id = Integer.parseInt(request.getParameter("idUser"));
             historiesDB.deleteUser(id);
